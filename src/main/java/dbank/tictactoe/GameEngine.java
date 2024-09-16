@@ -10,6 +10,10 @@ public class GameEngine {
         if (board.getRemainPlays() >= 5) {
             return empty();
         }
+        return getPlayerWinner(board);
+    }
+
+    private Optional<Player> getPlayerWinner(Board board) {
         var grid = board.getGrid();
 
         if (hasWinnerInRow(grid, 0)) {
@@ -50,6 +54,7 @@ public class GameEngine {
     private static boolean hasWinnerInParallel(Player[][] grid) {
         return grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2];
     }
+
     private static boolean hasWinnerInOppositeeParallel(Player[][] grid) {
         return grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0];
     }

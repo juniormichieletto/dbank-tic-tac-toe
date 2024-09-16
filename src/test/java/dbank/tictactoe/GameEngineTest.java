@@ -28,6 +28,20 @@ class GameEngineTest {
         assertThat(winner).isEmpty();
     }
 
+    @Test
+    void getWinnerShouldReturnEmptyBoardIsFullButNotWinner() {
+        var board = new Board(
+                new Player[][]{
+                        new Player[]{O, O, X},
+                        new Player[]{X, O, O},
+                        new Player[]{O, X, X}
+                });
+
+        var winner = gameEngine.getWinner(board);
+
+        assertThat(winner).isEmpty();
+    }
+
     static Stream<Player[][]> customBoardWithoutEnoughPlaysToWinProvider() {
         return Stream.of(
                 new Player[][]{

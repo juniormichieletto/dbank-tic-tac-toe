@@ -45,6 +45,7 @@ Use whatever types make most sense to you in terms of inputs and outputs to the 
 
 Requirements:
 - Java 17+ installed
+- Docker runtime (optional)
 
 How to run all the tests in command line:
 
@@ -52,8 +53,21 @@ How to run all the tests in command line:
 ./mvnw clean test
 ```
 
+or run the tests inside a docker container (non-local maven cache)
+```bash
+docker run --rm -v $(pwd):/app -w /app amazoncorretto:17-alpine ./mvnw test
+```
+
+or, using your local maven settings and repository (mapping your user/.m2)
+
+```bash
+docker run --rm -v $(pwd):/app -v ~/.m2/:/root/.m2/ -w /app amazoncorretto:17-alpine ./mvnw test
+```
+
 ---
 
 ## TODO:
 
-- Add game log in the Engine to accept player action (alternating positions, checking winner and etc)
+- Improve GameEngine::getWinner to have a dynamic code
+- Add terminal based interface to actually play the game
+- Migrate to java 23 or newest

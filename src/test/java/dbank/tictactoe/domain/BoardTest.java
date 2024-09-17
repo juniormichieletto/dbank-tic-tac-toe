@@ -1,9 +1,11 @@
-package dbank.tictactoe;
+package dbank.tictactoe.domain;
 
+import dbank.tictactoe.model.Board;
+import dbank.tictactoe.model.Player;
 import org.junit.jupiter.api.Test;
 
-import static dbank.tictactoe.Player.O;
-import static dbank.tictactoe.Player.X;
+import static dbank.tictactoe.model.Player.O;
+import static dbank.tictactoe.model.Player.X;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BoardTest {

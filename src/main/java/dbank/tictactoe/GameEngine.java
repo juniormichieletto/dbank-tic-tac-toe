@@ -7,13 +7,6 @@ import static java.util.Optional.empty;
 public class GameEngine {
 
     public Optional<Player> getWinner(Board board) {
-        if (board.getRemainPlays() >= 5) {
-            return empty();
-        }
-        return getPlayerWinner(board);
-    }
-
-    private Optional<Player> getPlayerWinner(Board board) {
         var grid = board.getGrid();
 
         if (hasWinnerInRow(grid, 0)) {
@@ -37,25 +30,25 @@ public class GameEngine {
         if (hasWinnerInParallel(grid)) {
             return Optional.of(grid[0][0]);
         }
-        if (hasWinnerInOppositeeParallel(grid)) {
+        if (hasWinnerInOppositeParallel(grid)) {
             return Optional.of(grid[0][2]);
         }
         return empty();
     }
 
     private static boolean hasWinnerInRow(Player[][] grid, int row) {
-        return grid[row][0] == grid[row][1] && grid[row][1] == grid[row][2];
+        return grid[row][0] != null && grid[row][0] == grid[row][1] && grid[row][1] == grid[row][2];
     }
 
     private static boolean hasWinnerInColumn(Player[][] grid, int column) {
-        return grid[0][column] == grid[1][column] && grid[1][column] == grid[2][column];
+        return grid[0][column] != null && grid[0][column] == grid[1][column] && grid[1][column] == grid[2][column];
     }
 
     private static boolean hasWinnerInParallel(Player[][] grid) {
-        return grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2];
+        return grid[0][0] != null && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2];
     }
 
-    private static boolean hasWinnerInOppositeeParallel(Player[][] grid) {
-        return grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0];
+    private static boolean hasWinnerInOppositeParallel(Player[][] grid) {
+        return grid[0][2] != null && grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0];
     }
 }

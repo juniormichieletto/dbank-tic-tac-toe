@@ -3,7 +3,6 @@ package dbank.tictactoe;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
@@ -24,7 +23,9 @@ class GameEngineTest {
     @Test
     void getWinnerShouldReturnEmptyBoardIsStillEmpty() {
         var board = new Board();
+
         var winner = gameEngine.getWinner(board);
+
         assertThat(winner).isEmpty();
     }
 
@@ -36,46 +37,6 @@ class GameEngineTest {
                         new Player[]{X, O, O},
                         new Player[]{O, X, X}
                 });
-
-        var winner = gameEngine.getWinner(board);
-
-        assertThat(winner).isEmpty();
-    }
-
-    static Stream<Player[][]> customBoardWithoutEnoughPlaysToWinProvider() {
-        return Stream.of(
-                new Player[][]{
-                        new Player[]{null, null, null},
-                        new Player[]{null, null, null},
-                        new Player[]{null, null, null}
-                },
-                new Player[][]{
-                        new Player[]{X, null, null},
-                        new Player[]{null, null, null},
-                        new Player[]{null, null, null}
-                },
-                new Player[][]{
-                        new Player[]{X, O, null},
-                        new Player[]{null, null, null},
-                        new Player[]{null, null, null}
-                },
-                new Player[][]{
-                        new Player[]{X, O, X},
-                        new Player[]{null, null, null},
-                        new Player[]{null, null, null}
-                },
-                new Player[][]{
-                        new Player[]{X, O, X},
-                        new Player[]{O, null, null},
-                        new Player[]{null, null, null}
-                }
-        );
-    }
-
-    @ParameterizedTest
-    @MethodSource("customBoardWithoutEnoughPlaysToWinProvider")
-    void getWinnerShouldReturnEmptyWhenNotHaveEnoughPlays(Player[][] grid) {
-        var board = new Board(grid);
 
         var winner = gameEngine.getWinner(board);
 

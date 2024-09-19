@@ -1,21 +1,21 @@
 package dbank.tictactoe.domain;
 
 import dbank.tictactoe.model.Board;
-import dbank.tictactoe.model.Player;
+import dbank.tictactoe.model.Symbol;
 import org.junit.jupiter.api.Test;
 
-import static dbank.tictactoe.model.Player.O;
-import static dbank.tictactoe.model.Player.X;
+import static dbank.tictactoe.model.Symbol.O;
+import static dbank.tictactoe.model.Symbol.X;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class BoardTest {
 
     @Test
     void newBoardShouldCreateWithEmptyGrid() {
-        Player[][] emptyGrid = {
-                new Player[]{null, null, null},
-                new Player[]{null, null, null},
-                new Player[]{null, null, null}
+        Symbol[][] emptyGrid = {
+                new Symbol[]{null, null, null},
+                new Symbol[]{null, null, null},
+                new Symbol[]{null, null, null}
         };
 
         var board = new Board();
@@ -25,10 +25,10 @@ class BoardTest {
 
     @Test
     void newCustomBoardShouldCreateWithCustomGrid() {
-        Player[][] expectedGrid = {
-                new Player[]{X, O, null},
-                new Player[]{O, X, null},
-                new Player[]{O, X, X}
+        Symbol[][] expectedGrid = {
+                new Symbol[]{X, O, null},
+                new Symbol[]{O, X, null},
+                new Symbol[]{O, X, X}
         };
 
         var board = new Board(expectedGrid);

@@ -1,5 +1,5 @@
 package dbank.tictactoe.model;
 
-public enum Player {
+public enum Symbol {
     X, O
 }

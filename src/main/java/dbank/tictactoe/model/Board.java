@@ -1,25 +1,25 @@
 package dbank.tictactoe.model;
 
 public class Board {
-    private Player[][] grid = new Player[3][3];
-    private Player lastPlayer;
+    private Symbol[][] grid = new Symbol[3][3];
+    private Symbol lastSymbol;
 
-    public Board(Player[][] grid) {
+    public Board(Symbol[][] grid) {
         this.grid = grid;
     }
 
     public Board() {
     }
 
-    public Player[][] getGrid() {
+    public Symbol[][] getGrid() {
         return grid;
     }
 
-    public Player getLastPlayer() {
-        return lastPlayer;
+    public Symbol getLastPlayer() {
+        return lastSymbol;
     }
 
-    public void setLastPlayer(Player player) {
-        this.lastPlayer = player;
+    public void setLastPlayer(Symbol symbol) {
+        this.lastSymbol = symbol;
     }
 }
